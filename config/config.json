@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "danny",
+    "password": null,
+    "database": "smite-site",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "danny",
+    "password": null,
+    "database": "smite-site",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "danny",
+    "password": null,
+    "database": "smite-site",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
