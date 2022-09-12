@@ -1,5 +1,7 @@
 const express = require('express')
+const port = process.env.PORT || 3000;
 const path = require('path')
+const {db} = require('./db')
 // const cors = require('cors')
 // const volleyball = require('volleyball')
 const app = express()
@@ -19,7 +21,12 @@ app.get("*", (req, res, next) => {
     res.sendFile(path.join(__dirname, "..", "public", "index.html"));
   });
 
-
+  const init = async () => {
+    await db.sync();
+    app.listen(port, () => console.log(`listening on port ${port}`));	
+  };
+  
+  init();
 
 
 module.exports = app;

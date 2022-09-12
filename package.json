@@ -6,12 +6,8 @@
   "scripts": {
     "start": "npm run build-watch & npm run start-server ",
     "build-watch": "webpack -w",
-    "start-server": "nodemon --watch server -e js,html server/index.js",
-    "migrate": "npx sequelize-cli db:migrate --debug",
-    "down": "npx sequelize-cli db:migrate:undo:all",
-    "make-seed": "npx sequelize-cli seed:generate --name demo-user",
-    "seed": "npx sequelize-cli db:seed:all --debug",
-    "drop-seed": "npx sequelize db:seed:undo:all"
+    "start-server": "nodemon --watch server -e js,html server/app.js",
+    "seed": "node seed.js"
   },
   "keywords": [],
   "author": "",
@@ -31,7 +27,6 @@
     "react-router-dom": "^6.3.0",
     "redux-thunk": "^2.4.1",
     "sequelize": "^6.21.6",
-    "sequelize-cli": "^6.4.1",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
   },

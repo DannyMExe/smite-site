@@ -47,7 +47,7 @@ const Builds = () => {
 							{/* <h3>{build.items[5].item_name}</h3> */}
 							<img src={build.items[5].item_icon} />
 						</div>
-					</div> : <div>Loading...</div>
+					</div> : <div>Loading Items</div>
 				))
 			) : (
 				<div>Loading...</div>

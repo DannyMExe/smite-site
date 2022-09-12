@@ -1,4 +1,4 @@
-// const { God, Item, Build } = require('../db');
+const { God, Item, Build } = require('../db');
 // const { God, Item, Build } = require('../../models');
 // const God = require('../../models/god');
 // const Build = require('../../models/build');
