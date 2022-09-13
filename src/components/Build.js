@@ -75,7 +75,7 @@ const Build = () => {
 			<div className='item-details'>
 				<h3></h3>
 			</div>
-            {build?.items.map((item, index) => <div className={`${(!hidden && showItemDetails == index) ? 'show' : 'hide'}`}>
+            {build?.items.map((item, index) => <div className={`${(!hidden && showItemDetails == index) ? 'my-show' : 'hide'}`}>
                     <h2>{item.item_name}</h2>
                     <h3>{item.item_short_desc}</h3>
                     {item.menuitems.map(mitem => <h2><span>{mitem.Value}</span> {mitem.Description}</h2>)}

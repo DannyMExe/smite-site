@@ -103,7 +103,7 @@ body {
   height: 150px;
   justify-content: space-around;
 }
-.show {
+.my-show {
   z-index: 10;
   position: absolute;
   transform: translateY(500px);
@@ -164,7 +164,7 @@ img.god-box {
   align-items: center;
   width: 150px;
 }
-.container {
+.myContainer {
   background: #d8e9f1;
   border: #023047 solid 5px;
   margin: 10px;

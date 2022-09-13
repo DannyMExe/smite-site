@@ -11,6 +11,13 @@ import { getItems } from './store/itemsReducer';
 import Build from './components/Build';
 import AddBuild from './components/addBuild';
 import SignUpPage from './components/SignUpPage';
+import Dashboard from './components/Dashboard';
+import Login from './components/Login';
+import PrivateRoute from './components/PrivateRoute';
+import ForgotPassword from './components/ForgotPassword';
+import UpdateProfile from './components/UpdateProfile';
+import { Container } from 'react-bootstrap'
+
 
 function App() {
 	const dispatch = useDispatch();
@@ -22,22 +29,27 @@ function App() {
 	
 	}, []);
 
-	console.log(process.env)
-
 	return (
-		<div>
-			<main>
+		<Container className="d-flex align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
+            <div className="w-100" style={{ maxWidth: '400px'}}>
 				<Routes>
-					<Route path='/' element={<Home />} />
+					<Route element={<PrivateRoute />}>
+						<Route path='/dashboard' element={<Dashboard />} />
+						<Route path='/update-profile' element={<UpdateProfile />} />
+					</Route>
+					<Route path='/' element={<Login />} />
 					<Route path='/items' element={<Items />} />
 					<Route path='/gods' element={<Gods />} />
 					<Route path='/builds' element={<Builds />} />
 					<Route path='/builds/:id' element={<Build />} />
 					<Route path='/builds/add' element={<AddBuild />} />
 					<Route path='/signup' element={<SignUpPage />} />
+					<Route path='/login' element={<Login />} />
+					<Route path='/forgot-password' element={<ForgotPassword />} />
+					
 				</Routes>
-			</main>
-		</div>
+				</div>
+        </Container>
 	);
 }
 
