@@ -1,11 +1,13 @@
 import {createStore, applyMiddleware, combineReducers} from "redux";
 import thunk from "redux-thunk";
-import studentsReducer from "./studentsReducer";
 import buildsReducer from "./buildsReducer";
+import godsReducer from "./godsReducer";
+import itemsReducer from "./itemsReducer";
 
 
 const rootReducer = combineReducers({
-    students: studentsReducer,
+    gods: godsReducer,
+    items: itemsReducer,
     builds: buildsReducer
 })
 

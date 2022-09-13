@@ -3,6 +3,7 @@ const { db, Build, God, Item } = require('./server/db')
 const builds = [
 	{
 		build_id: 1,
+        name: 'First Build',
 		god_id: 3492,
 		relic1_id: 21490,
 		relic2_id: 21499,
@@ -11,6 +12,7 @@ const builds = [
 	},
 	{
 		build_id: 2,
+        name: 'Second Build',
 		god_id: 1737,
 		relic1_id: 21490,
 		relic2_id: 21499,

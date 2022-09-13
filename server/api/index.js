@@ -24,6 +24,55 @@ router.get('/builds', async (req, res, next) => {
 	}
 });
 
+router.post('/builds', async (req, res, next) => {
+	try {
+		console.log(req.body);
+		const build = await Build.create(req.body);
+		build.final_items.map((item) => {
+			build.addItem(item)
+		})
+		res.send(build);
+	} catch (error) {
+		next(error);
+	}
+});
+
+router.get('/builds/:id', async (req, res, next) => {
+	try {
+		const build = await Build.findOne(
+			{
+			where: {
+				build_id: req.params.id
+			},
+			include: [{
+				model: God
+			}, {
+				model: Item
+			}]
+		}
+		);
+		res.send(build);
+	} catch (err) {
+		next(err);
+	}
+});
+
+router.put('/builds/:id', async (req, res, next) => {
+	try {
+		let build = await Build.findByPk(req.params.id);
+		build.final_items.map((item) => {
+			build.removeItem(item)
+		})
+		build = await build.update(req.body)
+		build.final_items.map((item) => {
+			build.addItem(item)
+		})
+		res.send(build);
+	} catch (error) {
+		next(error);
+	}
+});
+
 
 router.get('/items', async (req, res, next) => {
 	try {

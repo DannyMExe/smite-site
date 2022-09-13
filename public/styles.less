@@ -37,25 +37,91 @@ body {
 	/* flex-direction: column;
     justify-content: center; */
 }
+.godsContainer-add {
+	/* align-items: center; */
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	width: 65%;
+	margin: auto;
+	/* flex-direction: column;
+    justify-content: center; */
+}
 .god {
 	width: 150px;
 	height: 150px;
 	justify-content: center;
 	text-align: center;
 }
-.buildsContainer {
+.godsContainer-add .god {
+	margin: 5px;
+} 
+.godsContainer-add .god {
+	width: 150px;
+	height: 150px;
+	justify-content: center;
+	text-align: center;
+}
+.buildContainer {
 	/* align-items: center; */
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-evenly;
 	/* flex-direction: column;
     justify-content: center; */
+	z-index: -1;
+	width: 0px;
+	height: 0px;
+	padding-top: 50%;
+	padding-left: 100%;
+	background-size: cover;
+	background-position: top center;
+	top: 0;
+	left: 0;
+}
+.buildsContainer {
+	/* align-items: center; */
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-evenly;
+	width: 100%;
+	/* flex-direction: column;
+    justify-content: center; */
+
+}
+.background-image {
+	position: relative;
+	left: 0px;
+	top: 0px;
+	z-index: -1;
 }
 .build {
 	display: flex;
 	width: 100%;
 	height: 150px;
 	justify-content: space-around;
+	z-index: 10;
+	position: absolute;
+	transform: translateY(250px);
+	top: 0;
+	left: 0;
+}
+.builds {
+	display: flex;
+	width: 100%;
+	height: 150px;
+	justify-content: space-around;
+
+}
+.show {
+	z-index: 10;
+	position: absolute;
+	transform: translateY(500px);
+	top: 0;
+	left: 0;
+	text-align: center;
+	width: 100%;
+	background-color: #8ecae6;
 }
 .build img {
 	/* display: flex;
@@ -67,22 +133,46 @@ body {
 	max-height: 128px;
 	max-width: 128px;
 }
-.build img.god-box{
+.builds img {
+	/* display: flex;
+    width: 100%;
+    height: 150px;
+    justify-content: space-around; */
+	border-radius: 10px;
+	border: 10px solid #ff7276;
+	max-height: 128px;
+	max-width: 128px;
+}
+.item-box img {
+	/* display: flex;
+    width: 100%;
+    height: 150px;
+    justify-content: space-around; */
+	border-radius: 10px;
+	border: 10px solid #ff7276;
+	max-height: 128px;
+	max-width: 128px;
+}
+.god .item-box {
+	height: 150px;
+	width: 150px;
+}
+img.god-box {
 	border-radius: 10px;
 	border: 10px solid orange;
 }
 .item-box {
-    height: 150px;
-    width: 150px;
+	height: 150px;
+	width: 150px;
 }
 .god-box {
-    border-color: orange;
+	border-color: orange;
 }
 .god-name {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-    width: 150px;
+	width: 150px;
 }
 
 .container {
@@ -108,9 +198,10 @@ body {
 	width: 25px;
 }
 
-a {
+.buildsContainer > a {
 	text-decoration: none;
 	color: @campus-text;
+	width: 100%;
 }
 
 nav {
@@ -119,6 +210,59 @@ nav {
 	margin: 10px;
 }
 
-#student-form {
+#campus-form {
 	justify-content: center;
+	position: relative;
+	z-index: 1;
 }
+.build-name {
+	position: absolute;
+	text-align: center;
+	top: 20%;
+	width: 100%;
+	z-index: 1;
+}
+.hide {
+	display: none;
+}
+
+.item-details:hover + .hide {
+	display: block;
+	color: red;
+}
+span {
+	color:blueviolet;
+}
+.item-desc {
+	text-align: center;
+	
+}
+#add-build-form {
+	justify-content: center;
+	position: relative;
+	z-index: 1;
+}
+#add-build-form label{
+	display: block;
+}
+.god-name-add {
+	display: none;
+	position: absolute;
+	text-align: center;
+	z-index: 1;
+	width: inherit;
+	height: inherit;
+	display: flex;
+	visibility: hidden;
+	align-items: center;
+	justify-content: center;
+	color: aqua;
+}
+.god:hover .god-name-add{
+	visibility: visible;
+	background-color: rgba(50, 50, 50, .5);
+}
+.god .item-box {
+	position: absolute;
+}
+

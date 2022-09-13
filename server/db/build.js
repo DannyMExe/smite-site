@@ -6,7 +6,12 @@ const Build = db.define('build', {
     build_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
+    },
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false
     },
     god_id: {
         type: Sequelize.INTEGER,

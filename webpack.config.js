@@ -1,3 +1,6 @@
+const webpack = require('webpack')
+const Dotenv = require('dotenv-webpack');
+
 module.exports = {
   mode: "development",
   entry: ["./src/index.js"],
@@ -7,6 +10,9 @@ module.exports = {
   experiments: {
     topLevelAwait: true
   },
+  plugins: [
+    new Dotenv()
+  ],
   output: {
     path: __dirname + "/public",
     filename: "bundle.js",
@@ -18,6 +24,7 @@ module.exports = {
       directory: __dirname + "/public",
     },
   },
+
   module: {
     rules: [
       {
@@ -28,6 +35,30 @@ module.exports = {
           presets: ["@babel/preset-env", "@babel/preset-react"],
         },
       },
+      {
+        test: /\.(css)$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: () => [
+                  require('autoprefixer')
+                ]
+              }
+            }
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
+      }
     ],
   },
 };

@@ -13,7 +13,6 @@ const getItems = async() => {
 };
 
 const {data: items} = await getItems();
-console.log(items);
 
 
 

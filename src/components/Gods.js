@@ -13,7 +13,6 @@ const getGods = async() => {
 };
 
 const {data: gods} = await getGods();
-console.log(gods);
 
 
 
@@ -28,7 +27,9 @@ const Gods = () => {
             {gods ? gods.map(god =>
             <div className='god' key={god.id}>
             <div>{god.god_name}</div>
-            <img src={god.god_icon_image} height={'75px'} width={'75px'}/>
+            <div className='item-box'>
+            <img src={god.god_icon_image}/>
+            </div>
             </div>
         ): <div>Loading...</div>}
         </div>
