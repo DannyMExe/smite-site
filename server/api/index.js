@@ -1,4 +1,4 @@
-const { God, Item, Build } = require('../db');
+const { God, Item, Build, Skin, User } = require('../db');
 // const { God, Item, Build } = require('../../models');
 // const God = require('../../models/god');
 // const Build = require('../../models/build');
@@ -6,6 +6,27 @@ const { God, Item, Build } = require('../db');
 // const db = require('../../models');
 
 const router = require('express').Router();
+
+
+router.post('/auth', async (req, res, next) => {
+	try {
+		const user = await User.authenticate(req.body);
+		if(!user) res.sendStatus(404);
+		const token = await user.generateToken();
+		res.send(token); 
+	  } catch (ex) {
+		next(ex);
+	  }
+});
+
+router.get('/auth', async(req, res, next) => {
+	user = await User.byToken(req.headers.authorization)
+	if(user) {
+	  res.send(user);
+	} else {
+	  res.sendStatus(404);
+	}
+  });
 
 router.get('/builds', async (req, res, next) => {
 	try {
@@ -126,7 +147,14 @@ router.get('/items/:id', async (req, res, next) => {
 router.get('/gods', async (req, res, next) => {
 	try {
 		const gods = await God.findAll({
-			include: Build
+			include: [
+				{
+				model: Build
+			},
+			{
+				model: Skin
+			}
+		]
 		});
 		res.send(gods);
 	} catch (err) {

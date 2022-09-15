@@ -7,8 +7,11 @@ import { Container } from 'react-bootstrap';
 
 const Dashboard = () => {
     const [error, setError] = useState('')
-    const { currentUser, logout } = useAuth();
+    const { currentUser, logout, sign } = useAuth();
     const nagivate = useNavigate();
+
+    //console.log(sign)
+    const user = sign?.auth
 
     async function handleLogout() {
         setError('')
@@ -30,7 +33,7 @@ const Dashboard = () => {
                         <Card.Body>
                             <h2 className="text-center bm-4">Profile</h2>
                             {error && <Alert variant='danger'>{error}</Alert>}
-                            <strong>Email: </strong> {currentUser.email}
+                            <strong>Email: </strong> {user.email}
                             <Link to='/update-profile' className="btn btn-primary w-100 mt-3">Update Profile</Link>
                         </Card.Body>
                     </Card>

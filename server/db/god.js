@@ -150,15 +150,6 @@ const God = db.define('god', {
     latest_god: {
         type: Sequelize.STRING
     },
-    abilities: {
-        type: Sequelize.ARRAY(Sequelize.TEXT)
-    },
-    basic_attacks: {
-        type: Sequelize.ARRAY(Sequelize.TEXT)
-    },
-    skins: {
-        type: Sequelize.ARRAY(Sequelize.TEXT)
-    },
     role_icon: {
         type: Sequelize.STRING
     },

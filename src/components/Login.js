@@ -3,6 +3,7 @@ import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { Container } from 'react-bootstrap';
+// import { User } from '../../server/db';
 
 
 const Login = () => {
@@ -17,12 +18,13 @@ const Login = () => {
     async function handleSubmit(e) {
         e.preventDefault();
         console.log(emailRef.current.value, passwordRef.current.value)
+        const credentials = {email: emailRef.current.value, password: passwordRef.current.value}
 
 
         try {
             setError('')
             setLoading(true);
-            await login(emailRef.current.value, passwordRef.current.value)
+            await login(credentials)
             navigate('/dashboard')
         } catch {
             setError('Failed to sign in')

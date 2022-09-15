@@ -9,6 +9,9 @@ const Build = db.define('build', {
         primaryKey: true,
         autoIncrement: true
     },
+    user_id: {
+        type: Sequelize.INTEGER,
+    },
     name: {
         type: Sequelize.STRING,
         allowNull: false

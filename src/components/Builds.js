@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import AddBuildForm from './addBuildForm';
 
-// const {data: gods} = await getGods();
 
 
 const Builds = () => {

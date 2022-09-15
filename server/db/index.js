@@ -6,6 +6,8 @@ const Item = require('./item');
 const God = require('./god');
 const Build = require('./build');
 const Build_item = require('./build_item');
+const Skin = require('./skin');
+const User = require('./user');
 
 Build.belongsTo(God, { foreignKey: 'god_id' });
 God.hasMany(Build, { foreignKey: 'god_id' });
@@ -19,6 +21,12 @@ Item.belongsToMany(Build, {
     foreignKey: 'item_id',
 });
 
+Skin.belongsTo(God, { foreignKey: 'god_id'})
+God.hasMany(Skin, { foreignKey: 'god_id' });
+
+Build.belongsTo(User, { foreignKey: 'user_id'})
+User.hasMany(Build, { foreignKey: 'user_id' });
+
 
 
 module.exports = {
@@ -27,4 +35,6 @@ module.exports = {
 	Item,
 	God,
 	Build,
+    Skin,
+    User,
 };
