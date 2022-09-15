@@ -1,5 +1,5 @@
 body {
-  background: #8ecae6;
+  background-color: #8ecae6 !important;
 }
 .mainContainer {
   align-items: center;
@@ -144,16 +144,16 @@ body {
   max-width: 128px;
 }
 .god .item-box {
-  height: 150px;
-  width: 150px;
+  height: 128px;
+  width: 128px;
 }
 img.god-box {
   border-radius: 10px;
   border: 10px solid orange;
 }
 .item-box {
-  height: 150px;
-  width: 150px;
+  height: 128px;
+  width: 128px;
 }
 .god-box {
   border-color: orange;
@@ -246,4 +246,7 @@ span {
 }
 .god .item-box {
   position: absolute;
+}
+.build-name {
+  background: #8ecae6;
 }

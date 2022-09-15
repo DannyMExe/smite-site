@@ -16,7 +16,6 @@ import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import ForgotPassword from './components/ForgotPassword';
 import UpdateProfile from './components/UpdateProfile';
-import { Container } from 'react-bootstrap'
 
 
 function App() {
@@ -30,26 +29,26 @@ function App() {
 	}, []);
 
 	return (
-		<Container className="d-flex align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
-            <div className="w-100" style={{ maxWidth: '400px'}}>
+		
 				<Routes>
+				
+					<Route path='/' element={<Login />} />
+					<Route path='/signup' element={<SignUpPage />} />
+					<Route path='/login' element={<Login />} />
+					<Route path='/forgot-password' element={<ForgotPassword />} />
+
 					<Route element={<PrivateRoute />}>
 						<Route path='/dashboard' element={<Dashboard />} />
 						<Route path='/update-profile' element={<UpdateProfile />} />
 					</Route>
-					<Route path='/' element={<Login />} />
 					<Route path='/items' element={<Items />} />
 					<Route path='/gods' element={<Gods />} />
 					<Route path='/builds' element={<Builds />} />
 					<Route path='/builds/:id' element={<Build />} />
 					<Route path='/builds/add' element={<AddBuild />} />
-					<Route path='/signup' element={<SignUpPage />} />
-					<Route path='/login' element={<Login />} />
-					<Route path='/forgot-password' element={<ForgotPassword />} />
+				
 					
 				</Routes>
-				</div>
-        </Container>
 	);
 }
 

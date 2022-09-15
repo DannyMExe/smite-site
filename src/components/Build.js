@@ -30,7 +30,8 @@ const Build = () => {
     // build?.items ? console.log('HERE', JSON.parse(build.items[0].menuitems[0])) : console.log('');
     console.log(build?.items[0].menuitems[0])
 
-        const test = (event) => {
+        const mouseover = (event) => {
+			event.stopPropagation();
             console.log(event.target.id.slice(-1));
             setHidden(false)
             setShowItemDetails(event.target.id.slice(-1));
@@ -66,7 +67,7 @@ const Build = () => {
 			<h2 className='build-name'>{build?.name}</h2>
 			<div className='build'>
 				{build?.items.map((item, idx) => (
-					<div className={'item-box'} onMouseOver={test} onMouseOut={mouseout}>
+					<div className={'item-box'} onMouseOver={mouseover} onMouseOut={mouseout}>
 						<img id={`item${idx}`} src={item.item_icon} />
 					</div>
 				))}
