@@ -1,6 +1,3 @@
-const webpack = require('webpack')
-const Dotenv = require('dotenv-webpack');
-
 module.exports = {
   mode: "development",
   entry: ["./src/index.js"],
@@ -10,9 +7,6 @@ module.exports = {
   experiments: {
     topLevelAwait: true
   },
-  plugins: [
-    new Dotenv()
-  ],
   output: {
     path: __dirname + "/public",
     filename: "bundle.js",
