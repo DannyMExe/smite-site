@@ -25,7 +25,7 @@ Skin.belongsTo(God, { foreignKey: 'god_id'})
 God.hasMany(Skin, { foreignKey: 'god_id' });
 
 Build.belongsTo(User, { foreignKey: 'id'})
-User.hasMany(Build, { foreignKey: 'id' });
+User.hasMany(Build, { foreignKey: 'user_id' });
 
 
 
