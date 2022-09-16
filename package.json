@@ -9,6 +9,9 @@
     "start-server": "nodemon --watch server -e js,html server/app.js",
     "seed": "node seed.js"
   },
+  "engines": {
+    "node": "16.17.0"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
