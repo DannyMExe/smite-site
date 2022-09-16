@@ -17,7 +17,6 @@ const Login = () => {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        console.log(emailRef.current.value, passwordRef.current.value)
         const credentials = {email: emailRef.current.value, password: passwordRef.current.value}
 
 

@@ -6,10 +6,9 @@ import Login from './Login';
 const PrivateRoute = () => {
 	const { currentUser, sign } = useAuth();
 
-	console.log('sign', sign)
-	const user = sign?.auth
+	const user = window.localStorage.getItem("user");
 
-	return sign ? <Outlet /> : <Navigate to="/login" />;
+	return user ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default PrivateRoute;

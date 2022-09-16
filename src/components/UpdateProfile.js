@@ -10,10 +10,12 @@ const UpdateProfile = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
-    const { currentUser, runUpdatePassword, runUpdateEmail } = useAuth();
+    const { runUpdatePassword, runUpdateEmail, sign } = useAuth();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+
+    const currentUser = sign.auth;
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -65,7 +67,7 @@ const UpdateProfile = () => {
                                     <Form.Label>Password Confirmation</Form.Label>
                                     <Form.Control type="password" ref={passwordConfirmRef} placeholder='Leave blank to keep the same password' />
                                 </Form.Group>
-                                <Button disabled={loading} className="w-100" type="submit">Update</Button>
+                                <Button disabled={true} className="w-100" type="submit">Update (Currently Unavailable)</Button>
                             </Form>
                         </Card.Body>
                     </Card>

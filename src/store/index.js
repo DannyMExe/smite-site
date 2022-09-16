@@ -3,12 +3,14 @@ import thunk from "redux-thunk";
 import buildsReducer from "./buildsReducer";
 import godsReducer from "./godsReducer";
 import itemsReducer from "./itemsReducer";
+import usersReducer from "./usersReducer";
 
 
 const rootReducer = combineReducers({
     gods: godsReducer,
     items: itemsReducer,
-    builds: buildsReducer
+    builds: buildsReducer,
+    users: usersReducer
 })
 
 

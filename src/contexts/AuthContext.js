@@ -21,7 +21,7 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [sign, setSign] = useState();
 
-  const users = useSelector((state) => state.users);
+  // const users = useSelector((state) => state.users);
 
   function signup(email, password) {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -31,28 +31,36 @@ export function AuthProvider({ children }) {
   //     return signInWithEmailAndPassword(auth, email, password)
   // }
 
-//   const login = async (email, password) => {
-//     user = users.find(
-//       (user) => user.email === email && user.password === password
-//     );
-//     if (user) {
-//       return user.id;
-//     }
-//     const error = Error("Bad Credentials");
-//     error.status = 401;
-//     throw error;
-//   };
+  //   const login = async (email, password) => {
+  //     user = users.find(
+  //       (user) => user.email === email && user.password === password
+  //     );
+  //     if (user) {
+  //       return user.id;
+  //     }
+  //     const error = Error("Bad Credentials");
+  //     error.status = 401;
+  //     throw error;
+  //   };
 
-//   const loginWithEmailAndPassword = async (email, password) => {
-//     user = users.find(
-//       (user) => user.email === email && user.password === password
+  //   const loginWithEmailAndPassword = async (email, password) => {
+  //     user = users.find(
+  //       (user) => user.email === email && user.password === password
   const login = async (credentials) => {
-    console.log(credentials)
-    const response = await axios.post('/api/auth', credentials);
-        const { token } = response.data;
-        window.localStorage.setItem('token', token);
-        attemptToLogin();
-  }
+    const response = await axios.post("/api/auth", credentials);
+    const { token } = response.data;
+    window.localStorage.setItem("token", token);
+    await attemptToLogin();
+  };
+
+//   const updateUser = async() => {
+//     console.log('b4')
+//     const {data: myUser} = await axios.get("/api/user/", {
+//         params: sign.auth
+//       })
+//       console.log('here')
+//       setCurrentUser(myUser);
+//   }
 
   const attemptToLogin = async () => {
     const token = window.localStorage.getItem("token");
@@ -65,6 +73,7 @@ export function AuthProvider({ children }) {
       });
       setSign({ auth: response });
       console.log(response);
+      window.localStorage.setItem("user", JSON.stringify(response));
     }
   };
 
@@ -73,7 +82,10 @@ export function AuthProvider({ children }) {
   // },[])
 
   function logout() {
-    return auth.signOut();
+    window.localStorage.removeItem("token");
+    window.localStorage.removeItem("user");
+    setSign({ auth: {} });
+    return 'success';
   }
 
   function resetPassword(email) {
@@ -81,6 +93,7 @@ export function AuthProvider({ children }) {
   }
 
   function runUpdateEmail(user, email) {
+    axios.post('/api/users/update')
     return updateEmail(user, email);
   }
 
@@ -90,12 +103,11 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     setLoading(false);
-    // const unsubscribe = auth.onAuthStateChanged((user) => {
-    //   setCurrentUser(user);
-    //   setLoading(false);
-    // },);
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setLoading(false);
+    });
 
-    // return unsubscribe;
+    return unsubscribe;
   }, [sign]);
 
   const value = {

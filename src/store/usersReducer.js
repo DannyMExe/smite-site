@@ -4,7 +4,7 @@ const GET_USERS = 'GET_USERS';
 
 
 
-const _getUSERS = (users) => ({
+const _getUsers = (users) => ({
     type: GET_USERS,
     users
 })
@@ -12,8 +12,8 @@ const _getUSERS = (users) => ({
 
 export const getUsers = () => async (dispatch) => {
     try {
-    const {data:users} = await axios.get('/api/gods')
-    dispatch(_getUsers(gods))
+    const {data:users} = await axios.get('/api/users')
+    dispatch(_getUsers(users))
     }
     catch (error) {
         console.error(error);

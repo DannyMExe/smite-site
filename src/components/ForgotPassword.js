@@ -43,7 +43,7 @@ const ForgotPassword = () => {
                                     <Form.Label>Email</Form.Label>
                                     <Form.Control type="email" ref={emailRef} required />
                                 </Form.Group>
-                                <Button disabled={loading} className="w-100" type="submit">Send Reset Email</Button>
+                                <Button disabled={true} className="w-100" type="submit">Send Reset Email (Under Maintenance)</Button>
                             </Form>
                             <div className="w-100 text-center mt-3">
                                 <Link to='/login'>Login</Link>
@@ -51,7 +51,7 @@ const ForgotPassword = () => {
                         </Card.Body>
                     </Card>
                     <div className="w-100 text-center mt-2">
-                        Need an account? <Link to='/signup'>Reset Password</Link>
+                        Need an account? <Link to='/signup'>Sign Up</Link>
                     </div>
                 </div>
             </Container>

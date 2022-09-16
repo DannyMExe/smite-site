@@ -9,13 +9,14 @@ import { getBuilds } from './store/buildsReducer';
 import { getGods } from './store/godsReducer';
 import { getItems } from './store/itemsReducer';
 import Build from './components/Build';
-import AddBuild from './components/addBuild';
+import AddBuild from './components/AddBuild';
 import SignUpPage from './components/SignUpPage';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import ForgotPassword from './components/ForgotPassword';
 import UpdateProfile from './components/UpdateProfile';
+import { getUsers } from './store/usersReducer';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
 		dispatch(getBuilds());
 		dispatch(getGods());
 		dispatch(getItems());
+		dispatch(getUsers());
 	
 	}, []);
 
@@ -32,7 +34,7 @@ function App() {
 		
 				<Routes>
 				
-					<Route path='/' element={<Login />} />
+					<Route path='/' element={<Navigate to='/builds'/>} />
 					<Route path='/signup' element={<SignUpPage />} />
 					<Route path='/login' element={<Login />} />
 					<Route path='/forgot-password' element={<ForgotPassword />} />

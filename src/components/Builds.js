@@ -3,6 +3,7 @@ import { useSelector, useDispatch, useEffect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import AddBuildForm from './addBuildForm';
+import { Form } from 'react-bootstrap';
 
 
 
@@ -13,7 +14,9 @@ const Builds = () => {
 
 	return (
 		<div className='buildsContainer'>
-			<AddBuildForm />
+			<Form>
+			<Link to={'/builds/add'} className="btn btn-primary" style={{margin: 15 + 'px'}}>Add Your Own Build</Link>
+			</Form>
 			{builds.length ? (
 				builds.map((build) => (
 					build.items ? build.items.length ?
