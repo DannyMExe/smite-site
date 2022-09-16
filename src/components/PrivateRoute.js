@@ -6,7 +6,7 @@ import Login from './Login';
 const PrivateRoute = () => {
 	const { currentUser, sign } = useAuth();
 
-	const user = window.localStorage.getItem("user");
+	const user = JSON.parse(window.localStorage.getItem("user"));
 
 	return user ? <Outlet /> : <Navigate to="/login" />;
 };
