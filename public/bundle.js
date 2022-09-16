@@ -15747,7 +15747,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
  // const {data: gods} = await getGods();
 
 var Build = function Build() {
-  var _build, _build2, _build3, _build4, _build5, _build6, _build7;
+  var _build, _build2, _build3, _build4, _build4$god$skins$, _build5, _build6, _build7;
 
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
 
@@ -15801,7 +15801,7 @@ var Build = function Build() {
     id: "test",
     className: "buildContainer",
     style: {
-      backgroundImage: 'url(' + ((_build4 = build) === null || _build4 === void 0 ? void 0 : _build4.god.skins[0].skin_card) + ')'
+      backgroundImage: 'url(' + ((_build4 = build) === null || _build4 === void 0 ? void 0 : (_build4$god$skins$ = _build4.god.skins[0]) === null || _build4$god$skins$ === void 0 ? void 0 : _build4$god$skins$.skin_card) + ')'
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
     className: "build-name"

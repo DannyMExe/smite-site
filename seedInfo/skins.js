@@ -24017,4 +24017,4 @@ let skins = [
         return skin;
     })
 
-    module.exports = skins;
+module.exports = skins;

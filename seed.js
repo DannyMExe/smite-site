@@ -72,6 +72,7 @@ const seed = async () => {
             })
         )
 
+		console.log(skins)
 		await Promise.all(
 			skins.map(skin => Skin.create(skin))
 		);

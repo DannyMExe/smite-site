@@ -51,7 +51,7 @@ const Build = () => {
 				className='buildContainer'
 				style={{
 					backgroundImage:
-						'url(' + build?.god.skins[0].skin_card + ')',
+						'url(' + build?.god.skins[0]?.skin_card + ')',
 				}}
 			>
 				{/* <h2>{build?.name}</h2>
