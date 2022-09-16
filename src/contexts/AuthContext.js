@@ -23,8 +23,15 @@ export function AuthProvider({ children }) {
 
   // const users = useSelector((state) => state.users);
 
-  function signup(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password);
+  async function signup(username, email, password) {
+    try {
+    const response = await axios.post("/api/users", { username: username, email: email, password: password });
+    await login({username, email, password});
+    } catch (error) {
+      console.log(error);
+      }
+
+    // return createUserWithEmailAndPassword(auth, email, password);
   }
 
   // function login(email, password) {

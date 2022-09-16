@@ -27,6 +27,16 @@ router.get("/auth", async (req, res, next) => {
   }
 });
 
+router.post('/users', async (req, res, next) => {
+  try {
+  const user = await User.create(req.body)
+    res.send(user);
+  } catch (error) {
+    next(error);
+    }
+
+});
+
 router.get("/users", async (req, res, next) => {
   const users = await User.findAll({
     attributes: {

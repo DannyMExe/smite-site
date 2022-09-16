@@ -16630,6 +16630,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var Signup = function Signup() {
+  var usernameRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
   var emailRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
   var passwordRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
   var passwordConfirmRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
@@ -16660,7 +16661,7 @@ var Signup = function Signup() {
           switch (_context.prev = _context.next) {
             case 0:
               e.preventDefault();
-              console.log(emailRef.current.value, passwordRef.current.value);
+              console.log(usernameRef.current.value, emailRef.current.value, passwordRef.current.value);
 
               if (!(passwordRef.current.value !== passwordConfirmRef.current.value)) {
                 _context.next = 4;
@@ -16674,7 +16675,7 @@ var Signup = function Signup() {
               setError('');
               setLoading(true);
               _context.next = 9;
-              return signup(emailRef.current.value, passwordRef.current.value);
+              return signup(usernameRef.current.value, emailRef.current.value, passwordRef.current.value);
 
             case 9:
               navigate('/dashboard');
@@ -16716,6 +16717,12 @@ var Signup = function Signup() {
   }, error), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
     onSubmit: handleSubmit
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Group, {
+    id: "username"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Label, null, "Username"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Control, {
+    type: "username",
+    ref: usernameRef,
+    required: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Group, {
     id: "email"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Label, null, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Control, {
     type: "email",
@@ -17595,8 +17602,8 @@ function AuthProvider(_ref) {
       setSign = _useState6[1]; // const users = useSelector((state) => state.users);
 
 
-  function signup(email, password) {
-    return (0,firebase_auth__WEBPACK_IMPORTED_MODULE_2__.createUserWithEmailAndPassword)(_firebase__WEBPACK_IMPORTED_MODULE_1__.auth, email, password);
+  function signup(_x, _x2, _x3) {
+    return _signup.apply(this, arguments);
   } // function login(email, password) {
   //     return signInWithEmailAndPassword(auth, email, password)
   // }
@@ -17615,6 +17622,49 @@ function AuthProvider(_ref) {
   //     user = users.find(
   //       (user) => user.email === email && user.password === password
 
+
+  function _signup() {
+    _signup = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(username, email, password) {
+      var response;
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.prev = 0;
+              _context3.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_3___default().post("/api/users", {
+                username: username,
+                email: email,
+                password: password
+              });
+
+            case 3:
+              response = _context3.sent;
+              _context3.next = 6;
+              return login({
+                username: username,
+                email: email,
+                password: password
+              });
+
+            case 6:
+              _context3.next = 11;
+              break;
+
+            case 8:
+              _context3.prev = 8;
+              _context3.t0 = _context3["catch"](0);
+              console.log(_context3.t0);
+
+            case 11:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3, null, [[0, 8]]);
+    }));
+    return _signup.apply(this, arguments);
+  }
 
   var login = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(credentials) {
@@ -17641,7 +17691,7 @@ function AuthProvider(_ref) {
       }, _callee);
     }));
 
-    return function login(_x) {
+    return function login(_x4) {
       return _ref2.apply(this, arguments);
     };
   }(); //   const updateUser = async() => {
