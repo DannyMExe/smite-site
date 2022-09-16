@@ -17703,6 +17703,7 @@ function AuthProvider(_ref) {
 
   function logout() {
     window.localStorage.removeItem("token");
+    window.localStorage.removeItem("user");
     setSign({
       auth: {}
     });
