@@ -159,9 +159,9 @@ const AddBuild = () => {
                 <img src={relic1Img} />
             </div>
         </div>
-        <div id='relic1Container' className="godsContainer-add" onClick={handleChange('relic1')}>
+        <div id='relic1Container' className="godsContainer-add" >
             {relics ? relics.map(relic =>
-            <div className='god' key={relic.item_id} >
+            <div className='god' key={relic.item_id} onClick={handleChange('relic1')}>
             <div className='god-name-add' value={relic.item_id} relicimg={relic.item_icon}>{relic.item_name}</div>
             <div className='item-box' >
                 <img src={relic.item_icon}/>
@@ -181,9 +181,9 @@ const AddBuild = () => {
                 <img src={relic2Img} />
             </div>
         </div>
-        <div id='relic2Container'className="godsContainer-add" onClick={handleChange('relic2')}>
+        <div id='relic2Container'className="godsContainer-add" >
             {relics ? relics.map(relic =>
-            <div className='god' key={relic.item_id} >
+            <div className='god' key={relic.item_id} onClick={handleChange('relic2')}>
             <div className='god-name-add' value={relic.item_id} relicimg={relic.item_icon}>{relic.item_name}</div>
             <div className='item-box' >
                 <img src={relic.item_icon}/>
@@ -202,9 +202,9 @@ const AddBuild = () => {
                 <img src={eval(`finalItem${index+1}Img`)} />
             </div>
         </div>
-        <div id={`finalItem${index+1}`} className="godsContainer-add" onClick={handleChange(`finalItem${index+1}`)}>
+        <div id={`finalItem${index+1}`} className="godsContainer-add" >
             {finalItems.length ? finalItems.map(item =>
-            <div className='god' key={item.item_id} >
+            <div className='god' key={item.item_id} onClick={handleChange(`finalItem${index+1}`)}>
             <div className='god-name-add' value={item.item_id} itemimg={item.item_icon}>{item.item_name}</div>
             <div className='item-box' >
                 <img src={item.item_icon}/>
