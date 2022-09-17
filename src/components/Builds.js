@@ -16,6 +16,7 @@ const Builds = () => {
 		<div className='buildsContainer'>
 			<Form>
 			<Link to={'/builds/add'} className="btn btn-primary" style={{margin: 15 + 'px'}}>Add Your Own Build</Link>
+			<Link to={'/login'} className="btn btn-primary" style={{margin: 15 + 'px'}}>Log In</Link>
 			</Form>
 			{builds.length ? (
 				builds.map((build) => (

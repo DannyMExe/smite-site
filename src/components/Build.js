@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import AddBuildForm from './addBuildForm';
 import UpdateBuildForm from './updateBuildForm';
+import { Form } from 'react-bootstrap';
 
 // const {data: gods} = await getGods();
 
@@ -41,17 +42,24 @@ const Build = () => {
             setHidden(true)
         }
 
+		const skinNum = Math.floor(Math.random(build?.god.skins.length * 100))
+		console.log(build?.god.skins.length)
+		
+
 
 	return (
 		<>
+			<Form>
+				<Link to={'/builds'} className="btn btn-primary" style={{margin: 15 + 'px'}}>Builds Page</Link>
+			</Form>
 			<UpdateBuildForm />
-			{/* <img className='backgroundImage' src={build?.god.god_card_image} /> */}
-			<div
+			{/* TODO MATH.RANDOM NOT WORKING */}
+			{build?.god.skins.length ? <div
 				id='test'
 				className='buildContainer'
 				style={{
 					backgroundImage:
-						'url(' + build?.god.skins[0]?.skin_card + ')',
+						'url(' + build?.god.skins[Math.floor(Math.random(build?.god.skins.length * 100))]?.godSkin_URL + ')',
 				}}
 			>
 				{/* <h2>{build?.name}</h2>
@@ -63,7 +71,7 @@ const Build = () => {
 						</div>
 					))}
 				</div> */}
-			</div>
+			</div> : <div>Loading...</div>}
 			<h2 className='build-name'>{build?.name}</h2>
 			<div className='build'>
 				{build?.items.map((item, idx) => (

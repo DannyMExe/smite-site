@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Card, Alert } from "react-bootstrap";
+import { Button, Card, Alert, Form } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Container } from "react-bootstrap";
@@ -36,6 +36,9 @@ const Dashboard = () => {
 
   return (
     <>
+      <Form>
+			<Link to={'/builds'} className="btn btn-primary" style={{margin: 15 + 'px'}}>Builds Page</Link>
+			</Form>
       <Container
         className="d-flex align-items-center justify-content-center"
         style={{ minHeight: "100vh" }}
