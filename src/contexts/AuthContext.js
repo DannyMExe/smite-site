@@ -65,6 +65,7 @@ export function AuthProvider({ children }) {
     const token = window.localStorage.getItem("token");
 
     if (token) {
+      console.log('here')
       const { data: response } = await axios.get("/api/auth", {
         headers: {
           authorization: token,

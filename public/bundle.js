@@ -6230,7 +6230,7 @@ var Builds = function Builds() {
     }();
 
     loading && fetchUser();
-    user && setLoading(false);
+    (user || !token) && setLoading(false);
   }, [user]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "buildsContainer"
@@ -6966,15 +6966,20 @@ var PrivateRoute = function PrivateRoute() {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                if (!token) {
+                  _context.next = 6;
+                  break;
+                }
+
                 _context.t0 = setUser;
-                _context.next = 3;
+                _context.next = 4;
                 return attemptToLogin(token);
 
-              case 3:
+              case 4:
                 _context.t1 = _context.sent;
                 (0, _context.t0)(_context.t1);
 
-              case 5:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -6988,7 +6993,7 @@ var PrivateRoute = function PrivateRoute() {
     }();
 
     loading && fetchUser();
-    user && setLoading(false);
+    (user || !token) && setLoading(false);
   }, [user]);
   console.log(loading, user);
   return user && user !== 'Not signed in' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Outlet, null) : !loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Navigate, {
@@ -8155,18 +8160,19 @@ function AuthProvider(_ref) {
               token = window.localStorage.getItem("token");
 
               if (!token) {
-                _context2.next = 11;
+                _context2.next = 12;
                 break;
               }
 
-              _context2.next = 4;
+              console.log('here');
+              _context2.next = 5;
               return axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/auth", {
                 headers: {
                   authorization: token
                 }
               });
 
-            case 4:
+            case 5:
               _yield$axios$get = _context2.sent;
               response = _yield$axios$get.data;
               setSign({
@@ -8176,10 +8182,10 @@ function AuthProvider(_ref) {
               window.localStorage.setItem("user", JSON.stringify(response));
               return _context2.abrupt("return", response);
 
-            case 11:
+            case 12:
               return _context2.abrupt("return", "Not signed in");
 
-            case 12:
+            case 13:
             case "end":
               return _context2.stop();
           }

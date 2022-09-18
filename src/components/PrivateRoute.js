@@ -12,11 +12,13 @@ const PrivateRoute = () => {
 	
 	useEffect(() => {
 		const fetchUser = async() => {
+			if(token) {
 		setUser(await attemptToLogin(token))
+			}
 		}
 
 		loading && fetchUser();
-		user && setLoading(false);
+		(user || !token) && setLoading(false);
 
 	}, [user])
 
