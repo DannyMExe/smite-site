@@ -27,7 +27,7 @@ const Builds = () => {
 		}
 
 		loading && fetchUser();
-		user && setLoading(false);
+		!token || user && setLoading(false);
 
 	}, [user])
 
