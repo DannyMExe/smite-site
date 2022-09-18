@@ -1,12 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import { auth } from "../firebase";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  sendPasswordResetEmail,
-  updateEmail,
-  updatePassword,
-} from "firebase/auth";
 import axios from "axios";
 import { useSelector } from "react-redux";
 
@@ -79,8 +71,11 @@ export function AuthProvider({ children }) {
         },
       });
       setSign({ auth: response });
-      console.log(response);
+      // console.log(response);
       window.localStorage.setItem("user", JSON.stringify(response));
+      return response;
+    } else {
+      return "Not signed in";
     }
   };
 
@@ -96,25 +91,25 @@ export function AuthProvider({ children }) {
   }
 
   function resetPassword(email) {
-    return sendPasswordResetEmail(auth, email);
+    // return sendPasswordResetEmail(auth, email);
   }
 
   function runUpdateEmail(user, email) {
-    axios.post('/api/users/update')
-    return updateEmail(user, email);
+    // axios.post('/api/users/update')
+    // return updateEmail(user, email);
   }
 
   function runUpdatePassword(user, password) {
-    return updatePassword(user, password);
+    // return updatePassword(user, password);
   }
 
   useEffect(() => {
     setLoading(false);
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setLoading(false);
-    });
+    // const unsubscribe = auth.onAuthStateChanged((user) => {
+      // setLoading(false);
+    // });
 
-    return unsubscribe;
+    // return unsubscribe;
   }, [sign]);
 
   const value = {

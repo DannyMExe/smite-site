@@ -107,7 +107,7 @@ const AddBuild = () => {
 	const handleSubmit = (evt) => {
 		evt.preventDefault();
         console.log([name, god_id, relic1_id, relic2_id, final_items, desc])
-		dispatch(createBuild({ name, god_id, relic1_id, relic2_id, final_items, desc, user_id }));
+		dispatch(createBuild({user_id, name, god_id, relic1_id, relic2_id, final_items, desc}));
         setName('');
         setGod(3492);
         setRelic1(21545);
