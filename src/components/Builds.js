@@ -21,7 +21,9 @@ const Builds = () => {
 
 	useEffect(() => {
 		const fetchUser = async() => {
+			if (token) {
 		setUser(await attemptToLogin(token))
+			}
 		}
 
 		loading && fetchUser();

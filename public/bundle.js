@@ -6203,15 +6203,20 @@ var Builds = function Builds() {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                if (!token) {
+                  _context.next = 6;
+                  break;
+                }
+
                 _context.t0 = setUser;
-                _context.next = 3;
+                _context.next = 4;
                 return attemptToLogin(token);
 
-              case 3:
+              case 4:
                 _context.t1 = _context.sent;
                 (0, _context.t0)(_context.t1);
 
-              case 5:
+              case 6:
               case "end":
                 return _context.stop();
             }
