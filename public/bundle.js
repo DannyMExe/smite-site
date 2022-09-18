@@ -6196,6 +6196,7 @@ var Builds = function Builds() {
   var builds = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (data) {
     return data.builds;
   });
+  console.log(token == true, token);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchUser = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -6204,19 +6205,20 @@ var Builds = function Builds() {
             switch (_context.prev = _context.next) {
               case 0:
                 if (!token) {
-                  _context.next = 6;
+                  _context.next = 7;
                   break;
                 }
 
+                console.log('in fetch');
                 _context.t0 = setUser;
-                _context.next = 4;
+                _context.next = 5;
                 return attemptToLogin(token);
 
-              case 4:
+              case 5:
                 _context.t1 = _context.sent;
                 (0, _context.t0)(_context.t1);
 
-              case 6:
+              case 7:
               case "end":
                 return _context.stop();
             }

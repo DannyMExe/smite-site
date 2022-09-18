@@ -20,9 +20,12 @@ const Builds = () => {
 
 	const builds = useSelector((data) => data.builds);
 
+	console.log((token == true), token)
+
 	useEffect(() => {
 		const fetchUser = async() => {
 			if (token) {
+				console.log('in fetch')
 		setUser(await attemptToLogin(token))
 			}
 		}
