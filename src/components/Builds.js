@@ -14,6 +14,7 @@ const Builds = () => {
 	const [loading, setLoading] = useState(true)
 	const [user, setUser] = useState();
 	const token = window.localStorage.getItem('token')
+	!token && setUser('Not signed in')
 
 	const dispatch = useDispatch();
 
@@ -27,7 +28,7 @@ const Builds = () => {
 		}
 
 		loading && fetchUser();
-		!token || user && setLoading(false);
+		(user) && setLoading(false);
 
 	}, [user])
 
@@ -35,7 +36,7 @@ const Builds = () => {
 		<div className='buildsContainer'>
 			<Form>
 			<Link to={'/builds/add'} className="btn btn-primary" style={{margin: 15 + 'px'}}>Add Your Own Build</Link>
-			{(!user || user === 'Not signed in') && <Link to={'/login'} className="btn btn-primary" style={{margin: 15 + 'px'}}>Log In</Link>}
+			{(!token || user === 'Not signed in') && <Link to={'/login'} className="btn btn-primary" style={{margin: 15 + 'px'}}>Log In</Link>}
 			</Form>
 			{builds.length ? (
 				builds.map((build) => (
